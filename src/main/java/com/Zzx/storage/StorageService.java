@@ -12,3 +12,4 @@ public interface StorageService {
     boolean deleteNoteById(String id);
     void saveAllNotes(List<Note> notes);
 }
+
