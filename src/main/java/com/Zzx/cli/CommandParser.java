@@ -1,5 +1,7 @@
 package com.Zzx.cli;
 
+import com.Zzx.cli.CliController;
+import com.Zzx.cli.command.CommandRegistry;
 import com.Zzx.controller.NoteController;
 import com.Zzx.controller.TagController;
 import com.Zzx.service.NoteService;
@@ -9,11 +11,12 @@ import com.Zzx.storage.StorageService;
 
 import java.util.Scanner;
 
-public class CommandParser {
+public class CommandParser implements CliController {
     private final NoteController noteController;
     private final TagController tagController;
     private final Scanner scanner;
     private boolean isRunning;
+    private CommandRegistry commandRegistry;
 
     // 保持CommandParser不变
     public CommandParser() {
@@ -244,5 +247,10 @@ public class CommandParser {
 
     public void close() {
         scanner.close();
+    }
+
+    @Override
+    public void setRunning(boolean running) {
+        this.isRunning = running;
     }
 }
